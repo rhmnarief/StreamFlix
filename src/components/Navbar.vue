@@ -11,12 +11,13 @@
             aria-label="Search"
           />
           <button class="btn btn-outline-success" type="submit">
-            <!-- <Icon icon="bi:search" color="white" /> -->
             Search
           </button>
         </form>
         <div class="d-flex">
-          <button>Login</button>
+          <button class="btn btn-success">
+            Login
+          </button>
         </div>
       </div>
     </nav>

@@ -8,8 +8,17 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 
+// library.add(faUserSecret)
+
+// Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+
 Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
+  el: '#app',
+  components: { App },
+  template: '<App/>'
+
 }).$mount('#app')
