@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <b-jumbotron class="jumbotron row">
-      <div class="col-md-4">
+      <div class="desc col-md-4">
         <h1>This Films</h1>
         <div class="d-flex align-items-center flex-direction-column">
           <div class="harga">
@@ -38,4 +38,13 @@ export default {
 </script>
 
 <style>
+.jumbotron{
+  padding: 0 !important;
+  height: 464px;
+}
+.jumbotron .desc{
+  padding: 16px 0;
+}
+
+
 </style>
