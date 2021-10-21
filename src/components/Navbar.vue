@@ -1,22 +1,37 @@
 <template>
-  <div class="navbar">
-    <div class="container">
-      <div class="row">
-        <div class="col d-flex align-items-center justify-content-center">
-          <h1>Ini adalah navbar</h1>
+  <div class="container">
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand">StreamFlix</a>
+        <form class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">
+            <!-- <Icon icon="bi:search" color="white" /> -->
+            Search
+          </button>
+        </form>
+        <div class="d-flex">
+          <button>Login</button>
         </div>
       </div>
-    </div>
-
+    </nav>
   </div>
 </template>
 
 <script>
-export default {
+// import { Icon } from '@iconify/vue';
 
-}
+export default {
+  components: {
+    // Icon,
+  },
+};
 </script>
 
 <style>
-
 </style>
