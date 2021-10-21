@@ -31,7 +31,10 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name :'Information',
+
+};
 </script>
 
 <style>

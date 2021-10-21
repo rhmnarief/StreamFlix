@@ -28,6 +28,7 @@
 // import { Icon } from '@iconify/vue';
 
 export default {
+  name: 'Navbar',
   components: {
     // Icon,
   },
