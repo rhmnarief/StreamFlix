@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <Navbar />
-    <Information class="mt-4" />
     <div class="container">
       <div class="row">
         <CardMovie :key="movie.id" v-for="movie in movies" :movie="movie"/>
@@ -12,21 +11,24 @@
 
 <script>
 import CardMovie from "../components/CardMovie.vue";
-import Information from "../components/Information.vue";
 import Navbar from "../components/Navbar.vue";
 
 import axios from "axios";
 export default {
   name: "Home",
-  components: { Navbar, Information, CardMovie },
+  components: { Navbar
+  , CardMovie },
   data() {
     return {
       movies: {},
+      list : {
+        
+      }
     };
   },
 
   methods: {
-    getData() {
+    getPopular() {
       const API_KEY = "api_key=d241f7df3392dd830203d47214927a68";
       const BASE_URL = "https://api.themoviedb.org/3";
       const API_URL = "/movie/popular?";
@@ -41,7 +43,7 @@ export default {
   },
 
   mounted() {
-    this.getData();
+    this.getPopular();
   },
 };
 </script>
