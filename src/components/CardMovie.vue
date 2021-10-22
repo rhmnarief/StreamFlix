@@ -1,9 +1,11 @@
 <template>
-  <div class="card col-md-2 mb-4 p-0 d-flex align-items-center">
-    <div class="img p-2">
-    <img :src="posterPath" alt="" srcset="">
-    </div>
-  </div>
+      <div class="d-sm-block d-md none">
+        <div class="card col-xs-4">
+          <div class="img p-2">
+            <img :src="posterPath" alt="" srcset="" />
+          </div>
+        </div>
+      </div>
 </template>
 <script>
 export default {
@@ -13,11 +15,11 @@ export default {
       required: true,
     },
   },
-  computed :{
-    posterPath(){
-      return "https://image.tmdb.org/t/p/w500/" + this.movie.poster_path ;
-    }
-  }
+  computed: {
+    posterPath() {
+      return "https://image.tmdb.org/t/p/w500/" + this.movie.poster_path;
+    },
+  },
 };
 </script>
 
@@ -31,7 +33,7 @@ export default {
   line-height: 21px;
   text-align: justify;
 }
-.card img{
+.card img {
   width: 200px;
 }
 </style>
