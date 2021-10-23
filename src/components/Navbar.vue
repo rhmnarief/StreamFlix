@@ -12,13 +12,15 @@
             aria-label="Search"
           />
           <button 
-          class="btn btn-outline-success" 
           type="submit"
-          >Search</button>
+          class="d-flex align-items-center"
+          >
+            <b-icon-search class="btn p-0"></b-icon-search>
+          </button>
         </form>
-        <div class="d-flex">
-          <button class="btn btn-success">Login</button>
-        </div>
+        <b-button class="btn-login d-flex align-items-center justify-content-center">
+            <b-icon-box-arrow-in-right class="icon"></b-icon-box-arrow-in-right>
+        </b-button>
       </div>
     </nav>
   </div>
@@ -42,7 +44,6 @@ export default {
 
 <style>
 .navbar {
-  background-color: #282828 !important;
   color: white;
 }
 .navbar .navbar-brand{
@@ -63,4 +64,9 @@ export default {
   border: none !important;
   border-radius: 0 10px 10px 0 ;
 }
+.navbar .btn-login{
+  background: #282828;
+  border-radius: 10%;
+}
+
 </style>

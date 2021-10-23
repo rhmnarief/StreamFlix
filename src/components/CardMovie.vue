@@ -1,11 +1,17 @@
 <template>
-      <div class="d-sm-block d-md none">
-        <div class="card col-xs-4">
-          <div class="img p-2">
-            <img :src="posterPath" alt="" srcset="" />
-          </div>
-        </div>
-      </div>
+  <div class="card col-3 p-0 d-flex justify-content-center">
+    <div class="img">
+      <img :src="posterPath" alt="" srcset="" />
+    </div>
+    <div class="details">
+      <p>{{ movie.original_title }}</p>
+      <p>{{ movie.popularity }}</p>
+      <span>
+                <b-icon-search></b-icon-search>
+
+      </span>
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -29,6 +35,7 @@ export default {
   border: none !important;
 }
 .card p {
+  margin: 0;
   font-size: 14px;
   line-height: 21px;
   text-align: justify;

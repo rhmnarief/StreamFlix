@@ -24,7 +24,7 @@
         <p>Feature cast</p>
         <div class="actor"></div>
         <div class="button d-flex align-items-center justify-content-space">
-          <button class="btn btn-success">Play Trailer</button>
+          <button class="btn btn-success">Subscribe</button>
           <div class="m-3"></div>
           <button class="btn btn-danger">Favorite</button>
         </div>
