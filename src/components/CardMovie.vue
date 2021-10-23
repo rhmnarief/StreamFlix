@@ -12,19 +12,18 @@
             {{ movie.vote_average }}
           </p>
           <div class="mr-4"></div>
-          <p>
+          <p class="mb-1">
             <b-icon-eye></b-icon-eye>
             {{ movie.popularity }}
           </p>
         </div>
-        <p>RP. {{movie.price}}   </p>
+        <p>RP. {{price}} </p>
       </div>
     </div>
     <div class="button">
       <button class="btn btn-success">
-        <router-link :to="'/movie/'+ movie.id ">Views</router-link>
+        <router-link class="views" :to="'/movie/'+ movie.id ">Views</router-link>
       </button>
-
     </div>
   </div>
 </template>
@@ -32,21 +31,21 @@
 export default {
   name: "CardMovie",
   props: {
+    price :{},
     movie: {
-      price :"",
       required: true,
     },
   },
   methods :{
     ratePrice(){
       if (this.movie.vote_average < 3 ){
-        this.movie.price = 3500
+        this.price = 3500
       }else if(this.movie.vote_average < 6 ){
-        this.movie.price = 8250
+        this.price = 8250
       }else if(this.movie.vote_average < 8 ){
-        this.movie.price = 16350
+        this.price = 16350
       }else{
-        this.movie.price = 21250
+        this.price = 21250
       }
     }
   },
@@ -79,5 +78,8 @@ export default {
 }
 .card .details {
   padding-right: 90px;
+}
+.card .button .btn .views{
+  font-style: none !important;
 }
 </style>

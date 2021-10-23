@@ -10,16 +10,10 @@
       </div>
       <br />
       <div class="description">
-        <h1>Judul</h1>
-        <p>82 % | 2019-10-02 Crime, Thriler, Drama</p>
+        <h1>{{ details.belongs_to_collection.name }}</h1>
+        <p>  % | 2019-10-02 Crime, Thriler, Drama</p>
         <p class="desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam orci
-          metus, luctus ornare rutrum nec, mattis a lectus. Pellentesque
-          vehicula odio ex, eu sollicitudin justo iaculis sit amet. Donec non
-          pellentesque neque. Integer a ultrices felis. Nulla eget ipsum
-          imperdiet, rhoncus est rhoncus, ultricies justo. Sed ultricies
-          fermentum lacus. Integer lectus odio, ultricies vitae dolor vitae,
-          sollicitudin elementum massa
+         {{ details.overview }}
         </p>
         <p>Feature cast</p>
         <div class="actor"></div>
@@ -36,7 +30,11 @@
 <script>
 export default {
   name: "DetailsComp",
-  props: {},
+  props: {
+    details:{
+      required :true
+    }
+  },
 };
 </script>
 
