@@ -38,8 +38,13 @@
 <script>
 export default {
   name: "CardMovie",
-  props: {
+  data () {
+    return {
     price: {},
+
+    }
+  },
+  props: {
     movie: {
       required: true,
     },
@@ -64,6 +69,7 @@ export default {
   },
   mounted() {
     this.ratePrice();
+    console.log(this.movie)
   },
 };
 </script>

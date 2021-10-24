@@ -10,7 +10,6 @@
 
 <script>
 import CardMovie from "../components/CardMovie.vue";
-
 import axios from "axios";
 export default {
   name: "Home",

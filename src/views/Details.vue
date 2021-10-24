@@ -50,11 +50,12 @@
     <div class="wrapper">
       <Cast :key="credit.id" v-for="credit in credits" :credit="credit" />
     </div>
+    <br>
     <div class="row mt-1">
       <h4>Similiar Movies</h4>
     </div>
     <div class="row mt-4">
-      <RecomendComp :key="recomendation.id" v-for="recomendation in recomendations" recomendation="recomendation" />
+      <RecomendComp :key="recomendation.id" v-for="recomendation in recomendations" :recomendation="recomendation" />
 
     </div>
   </div>
@@ -77,7 +78,7 @@ export default {
       price: "",
       credits: {},
       details: {},
-      recomendations: [],
+      recomendations: {},
     };
   },
   methods: {
