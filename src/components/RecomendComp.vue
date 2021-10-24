@@ -23,10 +23,10 @@
           <h5>
           Rp.{{ price }}
         </h5>
-        <button class="btn btn-success ml-auto">
-          <router-link class="views" @click="this.reRender" :to="'/movie/' + recomendation.id" style="text-decoration: none; color: inherit;">
+        <button class="btn btn-success ml-auto" style="background: #282828; border: none ">
+          <a class="views" :href="'/movie/' + recomendation.id" style="text-decoration: none; color: inherit;">
           <b-icon-eye-fill style="background-color: inherit;"></b-icon-eye-fill>
-          </router-link>
+          </a>
         </button>
       </div>
       </div>

@@ -35,7 +35,7 @@
           <br />
           <div class="d-flex">
             <h1>
-              <i> Rp. {{ price }} </i>
+             Rp. {{ price }}
             </h1>
             <div class="button ml-auto">
               <button class="btn btn-success">Buy Now</button>
@@ -56,7 +56,6 @@
     </div>
     <div class="row mt-4">
       <RecomendComp :key="recomendation.id" v-for="recomendation in recomendations" :recomendation="recomendation" />
-
     </div>
   </div>
 </template>
@@ -122,9 +121,9 @@ export default {
     getRecomend() {
       // const API_KEY = "api_key=d241f7df3392dd830203d47214927a68";
       // const BASE_URL = "https://api.themoviedb.org/3";
-      const ID = this.$route.params.id;
       // const API_URL = "/movie/";
       // const UPDATE = "&language=en-US/?page=<page>";
+      const ID = this.$route.params.id;
       axios
         .get('https://api.themoviedb.org/3/movie/' + ID +'/recommendations?api_key=d241f7df3392dd830203d47214927a68&language=en-US/?page=<page>')
         .then((res) => {

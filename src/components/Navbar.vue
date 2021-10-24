@@ -3,21 +3,6 @@
     <nav class="navbar p-0">
       <div class="container-fluid p-0">
         <p class="navbar-brand m-0 p0">StreamFlix</p>
-        <form class="search d-flex">
-          <input
-            v-model="search"
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button 
-          type="submit"
-          class="d-flex align-items-center"
-          >
-            <b-icon-search class="btn p-0"></b-icon-search>
-          </button>
-        </form>
         <b-button class="btn-login d-flex align-items-center justify-content-center">
             <b-icon-box-arrow-in-right class="icon"></b-icon-box-arrow-in-right>
         </b-button>
