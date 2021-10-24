@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
-      <div class="row d-flex align-items-center justify-content-center">
+      <div class="row ">
         <CardMovie :key="movie.id" v-for="movie in movies" :movie="movie" />
       </div>
     </div>

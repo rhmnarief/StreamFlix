@@ -1,40 +1,35 @@
 <template>
-  <div class="test">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h1>test recomend Component</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- <div class="card p-0 col-sm-3">
+  <div class="card p-0 col-sm-3 mb-3">
     <div class="movies-aspect">
       <div class="img">
-        <img :src="posterPath" alt="" srcset="" />
+        <img src="https://placeimg.com/300/300/any" alt="" srcset="" />
       </div>
       <div class="details">
-        <p>{{ recomend.original_title }}</p>
+        <p>
+          {{ recomendation.original_title }}
+        </p>
         <div class="d-flex flex-direction-row">
           <p>
             <b-icon-star-fill></b-icon-star-fill>
-            {{ recomend.vote_average }}
+            Test
+            <!-- {{ recomendation.vote_average }} -->
           </p>
           <div class="mr-4"></div>
           <p class="mb-1">
             <b-icon-eye></b-icon-eye>
-            {{ recomend.popularity }}
+            Test
+            <!-- {{ recomendation.popularity }} -->
           </p>
         </div>
         <p>RP. 20.000 </p>
       </div>
-    </div>
     <div class="button">
       <button class="btn btn-success">
-        <router-link class="views" :to="'/movie/'+ recomend.id ">Views</router-link>
+        <router-link class="views" :to="'/movie/'+ recomendation.id ">Views</router-link>
       </button>
     </div>
-  </div> -->
+    </div>
+  </div>
 </template>
 
 <script>
@@ -42,17 +37,17 @@ export default {
   name: "RecomendComp",
   props: {
     price: {},
-    recomend: {
+    recomendation: {
       required: true,
     },
   },
   methods: {
     ratePrice() {
-      if (this.recomend.vote_average < 3) {
+      if (this.recomendation.vote_average < 3) {
         this.price = 3500;
-      } else if (this.recomend.vote_average < 6) {
+      } else if (this.recomendation.vote_average < 6) {
         this.price = 8250;
-      } else if (this.recomend.vote_average < 8) {
+      } else if (this.recomendation.vote_average < 8) {
         this.price = 16350;
       } else {
         this.price = 21250;
@@ -61,7 +56,7 @@ export default {
   },
   computed: {
     // posterPath() {
-    //   return "https://image.tmdb.org/t/p/w500/" + this.recomend.poster_path;
+    //   return "https://image.tmdb.org/t/p/150/" + this.recomendation.poster_path;
     // },
   },
   mounted() {
@@ -71,4 +66,7 @@ export default {
 </script>
 
 <style>
+.card .button router-link{
+  text-decoration: none;
+}
 </style>

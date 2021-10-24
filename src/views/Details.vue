@@ -27,50 +27,57 @@
             {{ item.name }}
             <span v-if="details.genres.length - 1 != index">,</span>
           </span>
-          <br>
-          <br>
+          <br />
+          <br />
           <p class="desc mb-2">
             {{ details.overview }}
           </p>
-          <br>
-        <div class="d-flex">
-          <h1>
-            <i>
-            Rp. {{ price }}
-            </i>
-          </h1>
-          <div class="button ml-auto">
-            <button class="btn btn-success">Buy Now</button>
+          <br />
+          <div class="d-flex">
+            <h1>
+              <i> Rp. {{ price }} </i>
+            </h1>
+            <div class="button ml-auto">
+              <button class="btn btn-success">Buy Now</button>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
     <div class="row mt-1">
-    <h4>Cast</h4>
+      <h4>Cast</h4>
     </div>
     <div class="wrapper">
       <Cast :key="credit.id" v-for="credit in credits" :credit="credit" />
     </div>
-
+    <div class="row mt-1">
+      <h4>Similiar Movies</h4>
+    </div>
+    <div class="row mt-4">
+      <RecomendComp :key="recomendation.id" v-for="recomendation in recomendations" recomendation="recomendation" />
 
     </div>
+  </div>
 </template>
 
 
 <script>
 import axios from "axios";
 import Cast from "@/components/Cast.vue";
+import RecomendComp from "@/components/RecomendComp.vue";
+
 export default {
   name: "Details",
   components: {
     Cast,
+    RecomendComp,
   },
   data() {
     return {
       price: "",
       credits: {},
       details: {},
+      recomendations: [],
     };
   },
   methods: {
@@ -85,7 +92,7 @@ export default {
           console.log(res.data);
           this.details = res.data;
         })
-        .catch((error) => console.log(error + "error"));
+        .catch((error) => console.log(error + " error get details"));
     },
     getCredits() {
       const API_KEY = "api_key=d241f7df3392dd830203d47214927a68";
@@ -98,7 +105,7 @@ export default {
           console.log(res.data.cast);
           this.credits = res.data.cast;
         })
-        .catch((error) => console.log(error + "error"));
+        .catch((error) => console.log(error + " error get credits"));
     },
     ratePrice() {
       if (this.details.vote_average < 3) {
@@ -111,6 +118,20 @@ export default {
         this.price = 21250;
       }
     },
+    getRecomend() {
+      // const API_KEY = "api_key=d241f7df3392dd830203d47214927a68";
+      // const BASE_URL = "https://api.themoviedb.org/3";
+      const ID = this.$route.params.id;
+      // const API_URL = "/movie/";
+      // const UPDATE = "&language=en-US/?page=<page>";
+      axios
+        .get('https://api.themoviedb.org/3/movie/' + ID +'/recommendations?api_key=d241f7df3392dd830203d47214927a68&language=en-US/?page=<page>')
+        .then((res) => {
+          console.log(res.data.results);
+          this.recomendations = res.data.results;
+        })
+        .catch((error) => console.log(error + " error get recomend"));
+    },
   },
   computed: {
     posterPath() {
@@ -121,6 +142,7 @@ export default {
     this.getDetails();
     this.ratePrice();
     this.getCredits();
+    this.getRecomend();
   },
 };
 </script>
@@ -137,20 +159,19 @@ input[type="reset"] {
   cursor: pointer;
   outline: inherit;
 }
-.details .wrapper{
+.details .wrapper {
   max-height: 400px;
   display: flex;
-  overflow-x: auto ;
+  overflow-x: auto;
 }
-.details .wrapper::-webkit-scrollbar{
-  width: 10px ;
+.details .wrapper::-webkit-scrollbar {
+  width: 10px;
 }
 .details .wrapper::-webkit-scrollbar-track {
-    /* background-color: darkgrey; */
-    background-color: #282828;
+  /* background-color: darkgrey; */
+  background-color: #282828;
 }
 .details .wrapper::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
-
 </style>

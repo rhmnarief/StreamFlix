@@ -1,8 +1,10 @@
 <template>
-  <div class="card p-0 col-sm-3">
+  <div class="card d-flex align-items-center col-xs-3 mb-3">
     <div class="movies-aspect">
       <div class="img">
+        <center>
         <img :src="posterPath" alt="" srcset="" />
+        </center>
       </div>
       <div class="details">
         <p>{{ movie.original_title }}</p>
@@ -17,13 +19,19 @@
             {{ movie.popularity }}
           </p>
         </div>
-        <p>RP. {{price}} </p>
+        <p>
+          <strong>
+          RP. {{ price }}
+          </strong>
+        </p>
       </div>
-    </div>
-    <div class="button">
-      <button class="btn btn-success">
-        <router-link class="views" :to="'/movie/'+ movie.id ">Views</router-link>
-      </button>
+      <div class="button d-block">
+        <button class="btn btn-success">
+          <router-link class="views" :to="'/movie/' + movie.id" style="text-decoration: none; color: inherit;"
+            >Views</router-link
+          >
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -31,33 +39,32 @@
 export default {
   name: "CardMovie",
   props: {
-    price :{},
+    price: {},
     movie: {
       required: true,
     },
   },
-  methods :{
-    ratePrice(){
-      if (this.movie.vote_average < 3 ){
-        this.price = 3500
-      }else if(this.movie.vote_average < 6 ){
-        this.price = 8250
-      }else if(this.movie.vote_average < 8 ){
-        this.price = 16350
-      }else{
-        this.price = 21250
+  methods: {
+    ratePrice() {
+      if (this.movie.vote_average < 3) {
+        this.price = 3500;
+      } else if (this.movie.vote_average < 6) {
+        this.price = 8250;
+      } else if (this.movie.vote_average < 8) {
+        this.price = 16350;
+      } else {
+        this.price = 21250;
       }
-    }
+    },
   },
   computed: {
     posterPath() {
       return "https://image.tmdb.org/t/p/w500/" + this.movie.poster_path;
     },
   },
-  mounted(){
-    this.ratePrice()
-  }
-
+  mounted() {
+    this.ratePrice();
+  },
 };
 </script>
 
@@ -76,10 +83,7 @@ export default {
 .card img {
   width: 220px;
 }
-.card .details {
-  padding-right: 90px;
-}
-.card .button .btn .views{
-  font-style: none !important;
+.card .movies-aspect{
+  padding: 0 40px;
 }
 </style>
