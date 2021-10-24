@@ -3,7 +3,7 @@
         <div class="card pr-auto">
           <img
             class="card-img-top"
-            src="https://placeimg.com/150/150/any"
+            :src="castProfileImage(credit)"
           />
           <div class="card-body p-0">
             <p>
@@ -24,11 +24,15 @@ export default {
       required : true,
     }
   },
-  computed:{
-    posterPath() {
-      return "https://image.tmdb.org/t/p/w500/" + this.movie.poster_path;
+  methods :{
+    castProfileImage(credit) {
+      if (credit.profile_path) {
+        return "https://image.tmdb.org/t/p/w300/" + credit.profile_path;
+      } else {
+        return "https://via.placeholder.com/300x450";
+      }
     },
-  }
+  },
 };
 </script>
 

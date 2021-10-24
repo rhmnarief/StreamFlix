@@ -1,5 +1,5 @@
 <template>
-  <div class="details container p-0">
+  <div class="details container mt-1 p-0">
     <div class="row">
       <div class="col-8 p-0">
         <img
@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="row mt-1">
-    <h2>Cast</h2>
+    <h4>Cast</h4>
     </div>
     <div class="wrapper">
       <Cast :key="credit.id" v-for="credit in credits" :credit="credit" />
