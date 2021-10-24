@@ -1,47 +1,75 @@
 <template>
-  <div class="container">
+  <div class="details container p-0">
     <div class="row">
-      <div class="col-12">
-        <img :src="posterPath" alt="" height="100%" />
+      <div class="col-8 p-0">
+        <img
+          :src="posterPath"
+          alt=""
+          width="100%"
+          style="border-radius: 0.5rem"
+        />
+      </div>
+
+      <div class="col-4 pl-4">
         <div class="description">
-          <h1>{{ details.original_title }}</h1>
-          <p>
+          <div class="head d-flex align-items-center">
+            <h2 class="m-0">{{ details.original_title }}</h2>
+            <button class="ml-auto mb-auto" style="font-size: 2rem">
+              <b-icon icon="bookmark-heart" class="border rounded p-2"></b-icon>
+            </button>
+          </div>
+          <p class="mb-1">
             <b-icon-star-fill></b-icon-star-fill> {{ details.vote_average }} |
-            2019-10-02 Crime, Thriler, Drama
+            {{ details.release_date }}
           </p>
-          <span>
-            <p key="detail.genres.id" :v-for="detail in details"></p>
+          <span> </span>
+          <span :key="index" v-for="(item, index) in details.genres">
+            {{ item.name }}
+            <span v-if="details.genres.length - 1 != index">,</span>
           </span>
-          <p class="desc">
+          <br>
+          <br>
+          <p class="desc mb-2">
             {{ details.overview }}
           </p>
-          <p>Feature cast</p>
-          <div class="actor"></div>
-          <div class="button d-flex align-items-center justify-content-space">
-            <button class="btn btn-success">Subscribe</button>
-            <div class="m-3"></div>
-            <button class="btn btn-danger">Favorite</button>
+          <br>
+        <div class="d-flex">
+          <h1>
+            <i>
+            Rp. {{ price }}
+            </i>
+          </h1>
+          <div class="button ml-auto">
+            <button class="btn btn-success">Buy Now</button>
           </div>
+        </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="row mt-1">
+    <h2>Cast</h2>
+    </div>
+    <div class="wrapper">
+      <Cast :key="credit.id" v-for="credit in credits" :credit="credit" />
+    </div>
+
+
+    </div>
 </template>
 
 
 <script>
 import axios from "axios";
-// import DetailsComp from "@/components/DetailsComp.vue";
-
+import Cast from "@/components/Cast.vue";
 export default {
   name: "Details",
   components: {
-    // DetailsComp,
+    Cast,
   },
-  props: ["movies"],
   data() {
     return {
-      id_movie: this.$route.params.id,
+      price: "",
+      credits: {},
       details: {},
     };
   },
@@ -59,6 +87,30 @@ export default {
         })
         .catch((error) => console.log(error + "error"));
     },
+    getCredits() {
+      const API_KEY = "api_key=d241f7df3392dd830203d47214927a68";
+      const BASE_URL = "https://api.themoviedb.org/3";
+      const ID = this.$route.params.id;
+      const API_URL = "/movie/";
+      axios
+        .get(BASE_URL + API_URL + ID + "/credits?" + API_KEY)
+        .then((res) => {
+          console.log(res.data.cast);
+          this.credits = res.data.cast;
+        })
+        .catch((error) => console.log(error + "error"));
+    },
+    ratePrice() {
+      if (this.details.vote_average < 3) {
+        this.price = 3500;
+      } else if (this.details.vote_average < 6) {
+        this.price = 8250;
+      } else if (this.details.vote_average < 8) {
+        this.price = 16350;
+      } else {
+        this.price = 21250;
+      }
+    },
   },
   computed: {
     posterPath() {
@@ -67,10 +119,38 @@ export default {
   },
   mounted() {
     this.getDetails();
-    this.posterPath();
+    this.ratePrice();
+    this.getCredits();
   },
 };
 </script>
 
 <style>
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+.details .wrapper{
+  max-height: 400px;
+  display: flex;
+  overflow-x: auto ;
+}
+.details .wrapper::-webkit-scrollbar{
+  width: 10px ;
+}
+.details .wrapper::-webkit-scrollbar-track {
+    /* background-color: darkgrey; */
+    background-color: #282828;
+}
+.details .wrapper::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
 </style>
