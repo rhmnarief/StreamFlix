@@ -1,14 +1,16 @@
 <template>
+<div class="nav">
   <div class="container p-0">
-    <nav class="navbar p-0">
+    <nav class="navbar p-2.5">
       <div class="container-fluid p-0">
-        <p class="navbar-brand m-0 p0">StreamFlix</p>
+        <p class="navbar-brand m-0 ">StreamFlix</p>
         <b-button class="btn-login d-flex align-items-center justify-content-center">
             <b-icon-box-arrow-in-right class="icon"></b-icon-box-arrow-in-right>
         </b-button>
       </div>
     </nav>
   </div>
+</div>
 </template>
 
 <script>
@@ -28,8 +30,15 @@ export default {
 </script>
 
 <style>
+
+.nav .container{
+  background: #282828;
+  border-radius: 40px ;
+}
 .navbar {
   color: white;
+  padding: 0px 24px;
+  position: fixed;
 }
 .navbar .navbar-brand{
   font-style: none !important;
@@ -52,6 +61,8 @@ export default {
 .navbar .btn-login{
   background: #282828;
   border-radius: 10%;
+  border: none;
 }
+
 
 </style>

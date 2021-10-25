@@ -1,7 +1,13 @@
 <template>
   <div class="home">
+    <div class="heroes">
     <div class="container">
-      <div class="row">
+        <Hero />
+    </div>
+    </div>
+    <div class="container mt-2">
+      <h5>Recomendations</h5>
+      <div class="row ">
         <CardMovie :key="movie.id" v-for="movie in movies" :movie="movie" />
         <nav aria-label="Page navigation example">
           <ul class="pagination">
@@ -25,11 +31,13 @@
 
 <script>
 import CardMovie from "../components/CardMovie.vue";
+import Hero from  "../components/Hero.vue"
 
 import axios from "axios";
 export default {
   name: "Home",
   components: {
+    Hero,
     CardMovie,
   },
 
@@ -91,5 +99,9 @@ export default {
   background: white;
   outline: none;
   font-size: 16px;
+}
+.home .heroes{
+  padding: 24px 0;
+  background: linear-gradient(180deg, #C4C4C4 12.24%, rgba(196, 196, 196, 0) 100%) !important;
 }
 </style>
