@@ -22,7 +22,10 @@
             <b-icon-star-fill></b-icon-star-fill> {{ details.vote_average }} |
             {{ details.release_date }}
           </p>
-          <span> </span>
+          <p> 
+            <b-icon-stopwatch></b-icon-stopwatch>
+            {{ details.runtime }} Minutes
+          </p>
           <span :key="index" v-for="(item, index) in details.genres">
             {{ item.name }}
             <span v-if="details.genres.length - 1 != index">,</span>

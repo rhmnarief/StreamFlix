@@ -14,13 +14,13 @@
             {{ recomendation.vote_average }}
           </p>
           <div class="mr-4"></div>
-          <p class="mb-1">
+          <p class="">
             <b-icon-eye></b-icon-eye>
             {{ recomendation.popularity }}
           </p>
         </div>
       <div class="button d-flex align-items-center">
-          <h5>
+          <h5 class="mb-0">
           Rp.{{ price }}
         </h5>
         <button class="btn btn-success ml-auto" style="background: #282828; border: none ">
